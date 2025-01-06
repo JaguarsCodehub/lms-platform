@@ -1,11 +1,11 @@
 import CallToAction from "./_components/call-to-action"
-import DashboardSnippet from './_components/dashboard-snippet'
-import PricingSection from './_components/pricing'
+import DashboardSnippet from "./_components/dashboard-snippet"
+import PricingSection from "./_components/pricing"
 
 // const PricingSection = dynamic(
-//     () => 
+//     () =>
 //         import("./_components/pricing")
-//             .then((component) => 
+//             .then((component) =>
 //                 component.PricingSection),
 //     {ssr: true}
 // )
