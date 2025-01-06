@@ -1,8 +1,8 @@
 import { onAuthenticatedUser } from "@/actions/auth"
-import GlassCard from '@/components/global/glass-card'
-import { redirect } from 'next/navigation'
+import GlassCard from "@/components/global/glass-card"
+import { redirect } from "next/navigation"
 import React from "react"
-import BackdropGradient from '../(landing)/_components/backdrop-gradient'
+import BackdropGradient from "../(landing)/_components/backdrop-gradient"
 
 type Props = {
     children: React.ReactNode
@@ -11,7 +11,7 @@ type Props = {
 const AuthLayout = async ({ children }: Props) => {
     const user = await onAuthenticatedUser()
 
-    if(user.status === 200) redirect("/callback/sign-in")
+    if (user.status === 200) redirect("/callback/sign-in")
 
     return (
         <div className="container h-screen flex justify-center items-center">
