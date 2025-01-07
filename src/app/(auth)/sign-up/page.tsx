@@ -1,7 +1,11 @@
+'use client'
 type Props = {}
 
-const SignUpPage = (props: Props) => {
-    return <div>SignUpPage</div>
+const SignUpForm = (props: Props) => {
+
+    const {} = useAuthSignUp()
+
+    return <div>SignUpForm</div>
 }
 
-export default SignUpPage
+export default SignUpForm

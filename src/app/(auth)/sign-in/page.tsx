@@ -1,5 +1,6 @@
+import SignInForm from '@/components/forms/sign-in'
 import { Separator } from "@/components/ui/separator"
-
+// TODO: callback
 type Props = {}
 
 const SignInPage = (props: Props) => {
@@ -10,7 +11,7 @@ const SignInPage = (props: Props) => {
                 Network with people from around the world, join groups, create
                 your own, watch courses and become the best version of yourself
             </p>
-            {/* <SignInForm /> */}
+            <SignInForm />
             <div className="my-10 w-full relative">
                 <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />

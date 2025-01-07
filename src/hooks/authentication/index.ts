@@ -1,14 +1,14 @@
-import { useSignIn } from '@clerk/nextjs';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import { z } from 'zod';
-import { SignInSchema } from './schema';
+import { useSignIn } from "@clerk/nextjs"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useMutation } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
+import { useForm } from "react-hook-form"
+import { toast } from "sonner"
+import { z } from "zod"
+import { SignInSchema } from "./schema"
 
 export const useAuthSignIn = () => {
-    const {isLoaded, setActive, signIn} = useSignIn();
+    const { isLoaded, setActive, signIn } = useSignIn()
 
     const {
         register,
@@ -17,26 +17,26 @@ export const useAuthSignIn = () => {
         formState: { errors },
     } = useForm<z.infer<typeof SignInSchema>>({
         resolver: zodResolver(SignInSchema),
-        mode: "onBlur"
+        mode: "onBlur",
     })
 
     const router = useRouter()
     const onClerkAuth = async (email: string, password: string) => {
-        if(!isLoaded) 
+        if (!isLoaded)
             return toast("Error", {
                 description: "Oops! something went wrong, try again later",
             })
         try {
             const authenticated = await signIn.create({
                 identifier: email,
-                password: password
+                password: password,
             })
 
             if (authenticated.status === "complete") {
                 reset()
-                await setActive({session: authenticated.createdSessionId})
+                await setActive({ session: authenticated.createdSessionId })
                 toast("Success", {
-                    description: "Welcome Back"
+                    description: "Welcome Back",
                 })
                 router.push("/callback/sign-in")
             }
@@ -49,25 +49,28 @@ export const useAuthSignIn = () => {
         }
     }
 
-    
     const { mutate: InitiateLoginFlow, isPending } = useMutation({
         mutationFn: ({
-            email, password
+            email,
+            password,
         }: {
             email: string
             password: string
         }) => onClerkAuth(email, password),
     })
 
-    const onAuthenticatedUser = handleSubmit(async(values) => {
-        InitiateLoginFlow({email: values.email, password: values.password})
+    const onAuthenticatedUser = handleSubmit(async (values) => {
+        InitiateLoginFlow({ email: values.email, password: values.password })
     })
 
     return {
         onAuthenticatedUser,
         register,
         errors,
-        isPending
+        isPending,
     }
+}
 
+export const useAuthSignUp = () => {
+    
 }
