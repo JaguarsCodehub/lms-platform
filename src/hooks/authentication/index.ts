@@ -71,6 +71,4 @@ export const useAuthSignIn = () => {
     }
 }
 
-export const useAuthSignUp = () => {
-    
-}
+export const useAuthSignUp = () => {}

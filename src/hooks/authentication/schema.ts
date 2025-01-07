@@ -8,6 +8,6 @@ export const SignInSchema = z.object({
         .max(64, "Your Password cannot be longer than 64 characters")
         .regex(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-            "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character"
+            "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
         ),
 })
