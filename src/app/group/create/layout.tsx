@@ -1,4 +1,4 @@
-import BackdropGradient from '@/app/(landing)/_components/backdrop-gradient'
+import BackdropGradient from "@/app/(landing)/_components/backdrop-gradient"
 import GlassCard from "@/components/global/glass-card"
 import GradientText from "@/components/global/gradient-text"
 import { GROUPLE_CONSTANTS } from "@/constants"
